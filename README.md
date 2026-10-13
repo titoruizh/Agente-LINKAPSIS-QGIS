@@ -1,4 +1,4 @@
-# qgis-claude-agent
+# Agente-LINKAPSIS-QGIS
 
 **Agente de IA que opera QGIS en lenguaje natural con Claude**
 
@@ -43,7 +43,8 @@ PyQGIS · Python · Claude (Claude Code) · MCP · Whisper · QGIS Processing
 
 ## Capturas
 <!-- TODO: captura del panel del agente en QGIS con capa de ejemplo -->
-![Panel del agente](docs/img/plugin_preview.png)
+<img width="604" height="999" alt="image" src="https://github.com/user-attachments/assets/dc4c6bbe-4668-4c27-9791-9de2c9ecf5b3" />
+
 
 ## Licencia
 GPL-2.0, heredada de Mapsuke (MIERUNE).
