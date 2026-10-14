@@ -4,8 +4,6 @@
 
 > 🔒 **Código privado.** Este repositorio es un *showcase*: documenta el problema, la solución y la arquitectura. El código fuente pertenece a un proyecto profesional y no se publica. No incluye datos reales, credenciales ni información de clientes.
 
-> **Créditos:** fork de [Mapsuke](https://github.com/MIERUNE/mapsuke) (MIERUNE Inc.), licenciado bajo **GPL-2.0**. Este trabajo extiende el plugin original; se mantiene la atribución y licencia del proyecto base.
-
 ## English summary
 A QGIS plugin (fork of Mapsuke by MIERUNE, GPL-2.0) that lets users operate QGIS in natural language through Claude (via Claude Code): free-form PyQGIS execution, a catalog of Processing algorithms, a custom MCP server, local Whisper dictation and a hash-chained audit log. Verified with 42 tests in real QGIS.
 
