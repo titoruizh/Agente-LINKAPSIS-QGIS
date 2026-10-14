@@ -1,47 +1,42 @@
 # Agente-LINKAPSIS-QGIS
 
-**Agente de IA que opera QGIS en lenguaje natural con Claude**
+Asistente de IA dentro de QGIS: el usuario escribe o dicta lo que necesita y el agente lo ejecuta en el proyecto.
 
-> 🔒 **Código privado.** Este repositorio es un *showcase*: documenta el problema, la solución y la arquitectura. El código fuente pertenece a un proyecto profesional y no se publica. No incluye datos reales, credenciales ni información de clientes.
+> 🔒 Código privado. Este repositorio solo describe el proyecto; no incluye código, datos reales ni credenciales.
 
-## English summary
-A QGIS plugin (fork of Mapsuke by MIERUNE, GPL-2.0) that lets users operate QGIS in natural language through Claude (via Claude Code): free-form PyQGIS execution, a catalog of Processing algorithms, a custom MCP server, local Whisper dictation and a hash-chained audit log. Verified with 42 tests in real QGIS.
+<img width="1919" height="1026" alt="Panel del agente en QGIS" src="https://github.com/user-attachments/assets/4be1b32e-aec5-48cc-902e-9c6598dd469b" />
 
-## Problema
-Muchas tareas GIS repetitivas exigen conocer cientos de algoritmos de Processing y escribir PyQGIS. Los usuarios no programadores pierden tiempo y los procesos no quedan auditados.
+## Qué hace
+- Recibe instrucciones en texto o por voz (dictado local con Whisper).
+- Las resuelve con Claude, usando Claude Code como puente.
+- Ejecuta PyQGIS y algoritmos de Processing sobre el proyecto abierto.
+- Consulta el estado del proyecto (capas, campos, selección) a través de un servidor MCP propio.
+- Deja un registro local de cada acción, encadenado con hashes y con los secretos ocultos.
 
-## Solución
-- Chat dentro de QGIS conectado a **Claude** mediante **Claude Code**.
-- Ejecución de **PyQGIS** con helpers propios y acceso a un catálogo de **~5.400 algoritmos de Processing**.
-- **Servidor MCP propio** (stdio) para que el modelo consulte el estado del proyecto.
-- **Dictado por voz local** con Whisper.
-- Contexto adicional: dibujos y adjuntos sobre el mapa.
-- **Auditoría local** con hashes encadenados y redacción automática de secretos.
+## Por qué
+Muchas tareas GIS repetitivas requieren saber qué algoritmo usar o escribir scripts. El objetivo es que cualquier persona del equipo pueda pedirlas en lenguaje natural y que quede trazabilidad de lo que se hizo.
 
-## Arquitectura
+## Cómo funciona
 ```mermaid
-flowchart LR
-  U[Usuario: texto o voz] --> P[Plugin QGIS]
-  P --> WH[Whisper local]
-  P --> CC[Claude Code CLI] --> CL[Claude]
-  CL --> MCP[Servidor MCP propio]
-  MCP --> Q[Proyecto QGIS / PyQGIS]
-  CL --> EX[Ejecución PyQGIS + Processing]
-  EX --> Q
-  P --> AU[Auditoría con hashes encadenados]
+flowchart TD
+  A[Instrucción: texto o voz] --> B[Plugin en QGIS]
+  B --> C[Claude vía Claude Code]
+  C <--> D[Servidor MCP: estado del proyecto]
+  C --> E[PyQGIS / Processing]
+  E --> F[Resultado en el mapa]
+  B --> G[Registro de auditoría]
 ```
 
-## Stack
-PyQGIS · Python · Claude (Claude Code) · MCP · Whisper · QGIS Processing
+## Tecnologías
+Python · PyQGIS · QGIS Processing · Claude · Model Context Protocol (MCP) · Whisper
 
-## Métricas verificadas
-| Indicador | Valor |
+## Validación
+| Prueba | Resultado |
 |---|---|
-| Pruebas en QGIS real | 42 |
+| Pruebas automáticas en QGIS 3.44 | 42 |
 
-## Capturas
-<!-- TODO: captura del panel del agente en QGIS con capa de ejemplo -->
-<img width="1919" height="1026" alt="image" src="https://github.com/user-attachments/assets/4be1b32e-aec5-48cc-902e-9c6598dd469b" />
+## English
+AI assistant inside QGIS: users type or dictate a task and the agent runs it on the open project using Claude, PyQGIS/Processing and a custom MCP server, with a local hash-chained audit log. Source code is private.
 
-## Autor
+---
 Tito Ruiz Haros · [github.com/titoruizh](https://github.com/titoruizh)
